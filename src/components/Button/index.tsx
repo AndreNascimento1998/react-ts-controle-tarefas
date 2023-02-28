@@ -1,8 +1,8 @@
-function Button(props: any) {
-    const style = { backgroundColor: 'red', color: 'black'}
-
+function Button(props : {style?: Object, nome: string, type?: "button" | "submit" | "reset"}) {
+    const stylesDefault = { backgroundColor: 'red', color: 'black'};
+    const {style} = props;
     return (
-        <button className="btn mb-3" style={props.style || style}>{props.nome}</button>
+        <button type={props.type} className="btn mb-3" style={style || stylesDefault}>{props.nome}</button>
     )
 
 }
