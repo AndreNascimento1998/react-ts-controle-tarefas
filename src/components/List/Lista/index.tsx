@@ -1,7 +1,6 @@
 import { ITarefa } from "../../../Interface/ITarefa";
 
-function Lista( props ) {
-
+function Lista( props: {cor?: string, item: ITarefa}) {
 
     return (
         <div className="col-4 text-center p-2">
