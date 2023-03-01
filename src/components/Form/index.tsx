@@ -1,24 +1,23 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { ITarefa } from "../../Interface/ITarefa";
 import Button from "../Button";
 import "./style.scss";
 
-function Form(props){
+function Form(props: {setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>, style?: Object}){
 
 
    const [tarefas1, setTarefas1] = useState({
-        tarefa: 'dsa',
-        tempo: '00:00'
+        tarefa: '',
+        tempo: '00:00:00'
    })
 
-    function adicionarTarefa(e) {
+    function adicionarTarefa(e: React.FormEvent) {
         e.preventDefault();
         props.setTarefas(antigas => [...antigas, { ...tarefas1}])
-        console.log(tarefas1);
     }
 
     return (
-        <form onSubmit={adicionarTarefa.bind(this)}>
+        <form onSubmit={adicionarTarefa}>
             <div className="row alinhamento mt-5 gx-0 p-1 text-center">
                 <div className="col-5 mr-1">
                     <div className="input-group input-group mb-3">
