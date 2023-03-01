@@ -7,7 +7,16 @@ import './style.scss';
 
 function App() {
     const [tarefas, setTarefas] = useState<ITarefa[] | []> ([]);
-    //const [selecionado, setSelecionado] = useState<ITarefa>();
+    
+    const [selecionado, setSelecionado] = useState<ITarefa>();
+
+    function selecionaTarefa(tarefaSelecionada: ITarefa)  {
+        setSelecionado(tarefaSelecionada);
+        setTarefas(tarefasAnteriores => tarefasAnteriores.map(tarefa => ({
+            ...tarefa,
+        selecionado: tarefa.id === tarefaSelecionada.id ? true : false
+        })))
+    }
 
     return (
         <div className="row gx-0">
@@ -21,10 +30,12 @@ function App() {
                     <Cronometro 
                         titulo='Escolha um card e inicie o cronômetro'
                         corLetra='white'
+                        selecionado={selecionado}
                     />
                     <List 
                         style={{backgroundColor: 'white'}}
                         tarefas={tarefas}
+                        selecionaTarefa={selecionaTarefa}
                     />
                 </div>
             </div>
