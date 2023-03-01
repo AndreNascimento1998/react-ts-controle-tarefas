@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ITarefa } from "../../Interface/ITarefa";
 import Button from "../Button";
 import "./style.scss";
+import {v4 as uuidv4} from 'uuid';
 
 function Form(props: {setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>, style?: Object}){
 
@@ -12,10 +13,15 @@ function Form(props: {setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>
    })
 
     function adicionarTarefa(e: React.FormEvent) {
-        debugger;
         e.preventDefault();
         // qual a diferença ?? tarefas1
-        props.setTarefas(antigas => [...antigas, { ...tarefas1}])
+        props.setTarefas(antigas => [...antigas, 
+            { 
+                ...tarefas1, 
+                selecionado: false, 
+                completado: false,
+                id: uuidv4()
+            }])
         setTarefas1({tarefa: '', tempo: '00:00:00'})
     }
 

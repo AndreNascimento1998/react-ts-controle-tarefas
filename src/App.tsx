@@ -2,20 +2,13 @@ import { useState } from "react";
 import Cronometro from "./components/Cronometro";
 import Form from "./components/Form";
 import List from "./components/List";
+import { ITarefa } from "./Interface/ITarefa";
 import './style.scss';
 
 function App() {
-    const [tarefas, setTarefas] = useState([
-        {
-            tarefa: 'Resact',
-            tempo: '01:30:00'
-        },
-        {
-            tarefa: 'JavaScript',
-            tempo: '01:00:00'
-        },
-    ])
-    ;
+    const [tarefas, setTarefas] = useState<ITarefa[] | []> ([]);
+    //const [selecionado, setSelecionado] = useState<ITarefa>();
+
     return (
         <div className="row gx-0">
             <div className="col-8 offset-2 margem p-5">
