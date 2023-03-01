@@ -13,7 +13,10 @@ function Lista( props: {cor?: string, item: ITarefa, selecionaTarefa: any}) {
                                 color: 'white',
                                 cursor: 'pointer'
                             }
-                            : {background : props.cor}
+                            : {
+                                background : props.cor,
+                                cursor: 'pointer'
+                            }
                         } 
                         className="rounded p-2"
                         onClick={() => props.selecionaTarefa({...props.item})}

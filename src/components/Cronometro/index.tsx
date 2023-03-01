@@ -4,7 +4,13 @@ import Button from '../Button';
 import Relogio from './Relogio';
 import './style.scss';
 
-function Cronometro(props: {titulo: string, corLetra: string, selecionado: any}) {
+function Cronometro(props: 
+    {
+        titulo: string, 
+        corLetra: string, 
+        selecionado: any, 
+    }) {
+
     const {titulo, corLetra} = props
     const [tempo, setTempo] = useState<any>();
         
@@ -14,6 +20,15 @@ function Cronometro(props: {titulo: string, corLetra: string, selecionado: any})
             }
         }, [props.selecionado])
     
+        function regressiva(contador: number = 0){
+            setTimeout(() => {
+                if(contador > 0) {
+                    setTempo(contador - 1);
+                    return regressiva(contador - 1);
+                }
+            }, 1000)
+        }
+
     return (
         <div className="row centro mb-3 p-2 mt-3 letra" style={{color: corLetra}}>
             <div className='col-12'>
@@ -28,6 +43,7 @@ function Cronometro(props: {titulo: string, corLetra: string, selecionado: any})
                     style={{backgroundColor: '#3D3D3D', color: 'white'}}
                     nome='Começar'
                     type='button'
+                    onClick={() => regressiva(tempo)}
                 />
             </div>
         </div>
