@@ -6,14 +6,17 @@ import "./style.scss";
 function Form(props: {setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>, style?: Object}){
 
 
-   const [tarefas1, setTarefas1] = useState({
+   const [tarefas1, setTarefas1]  = useState({
         tarefa: '',
         tempo: '00:00:00'
    })
 
     function adicionarTarefa(e: React.FormEvent) {
+        debugger;
         e.preventDefault();
+        // qual a diferença ?? tarefas1
         props.setTarefas(antigas => [...antigas, { ...tarefas1}])
+        setTarefas1({tarefa: '', tempo: '00:00:00'})
     }
 
     return (
